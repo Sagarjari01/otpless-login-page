@@ -2,10 +2,13 @@ import React from 'react'
 import { initOTPless } from '../utills/initOtTPless'
 
 const Login = () => {
+
+  useEffect(initOTPless, [])
+
   return (
     <div>
         <div>Login page</div><br/><br/>
-        <button onClick={initOTPless}>Login</button>
+        <div id="otpless" data-custom="true">Login</div>
     </div>
   )
 }
