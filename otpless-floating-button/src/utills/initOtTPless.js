@@ -21,8 +21,4 @@ export const initOTPless = () => {
         window.location.href = '/dashboard';
     };
 
-    window.OTPlessSDKCancelCallback = () =>{
-        const floater = document.getElementById('otpless-floating-button')
-        floater.style.display  = 'none'
-    }
 }

@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <div>
         <div>Login page</div><br/><br/>
-        <div id="otpless" data-custom="true">Login</div>
+        <button id="otpless" data-custom="true">Login</button>
     </div>
   )
 }
