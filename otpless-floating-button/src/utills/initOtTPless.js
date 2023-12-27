@@ -13,16 +13,12 @@ export const initOTPless = () => {
 		}, 0);
 	};
 
-	if (otplessInit) {
-		otplessInit();
-	} else {
-		loadScript();
-	}
+	otplessInit ? otplessInit() : loadScript();
 
-    const otpless = (otplessUser) => {
+    	const otpless = (otplessUser) => {
 		alert("OTPLESS DATA :" + JSON.stringify(otplessUser));
 		window.location.href = "/dashboard";
 	};
 
-    Reflect.set(window, 'otpless', otpless);
+    	Reflect.set(window, 'otpless', otpless);
 };
