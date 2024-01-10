@@ -9,16 +9,28 @@ const Login = () => {
       openModal();
     }
   }, []);
+  
+  const callback = (otplessUser) => {
+    const currentURL = window.location.href;
+    const urlWithoutParams = currentURL.split("?")[0];
+    window.history.pushState(null, "", urlWithoutParams);
+    alert("OTPLESS DATA :"+JSON.stringify(otplessUser))
+    window.location.href = '/dashboard';
+  };
+  
   const openModal = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const paramsValue = urlParams.get("ex");
+    
     if (!paramsValue) {
       const currentURL = window.location.href;
       const newParam1 = "ex=true";
       const updatedURL = `${currentURL}?${newParam1}`;
       window.history.pushState(null, "", updatedURL);
     }
-    initOTPless();
+    
+    initOTPless(callback);
+    
     const modalContainer = document.getElementById("modalContainer");
     const modal = document.getElementById("otpless-login-page");
     modalContainer.style.display = "flex";
