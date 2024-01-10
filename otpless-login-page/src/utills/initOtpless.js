@@ -1,4 +1,4 @@
-export const initOTPless = () => {
+export const initOTPless = (callback: Function) => {
 
     const otplessInit = Reflect.get(window, 'otplessInit');
 
@@ -9,18 +9,7 @@ export const initOTPless = () => {
         document.body.appendChild(script)
     }
 
-    if (otplessInit) {
-        otplessInit()
-    }
-    else {
-        loadScript()
-    }
+    otplessInit ? otplessInit() : loadScript();
 
-    window.otpless = (otplessUser) => {
-        const currentURL = window.location.href;
-        const urlWithoutParams = currentURL.split("?")[0];
-        window.history.pushState(null, "", urlWithoutParams);
-        alert("OTPLESS DATA :"+JSON.stringify(otplessUser))
-        window.location.href = '/dashboard';
-    };
+    Reflect.set(window, "otpless", callback);
 }
